@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from '@google/genai';
-import { ChunkAnalysisResult } from '../data/callScenarios';
+import type { ChunkAnalysisResult } from '../data/callScenarios';
 
 const SYSTEM_INSTRUCTION = `You are "Kavach AI" (Google Scam Call Shield), a real-time Indian phone call safety assistant protecting elders and first-time smartphone users from phone fraud.
 You are listening to a live rolling audio chunk (.wav) of an ongoing phone call in Gujarati, Hindi, or English.

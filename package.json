@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite --port 5173 --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test tests/scamCallShield.test.ts",
+    "test:coverage": "node --test --experimental-test-coverage tests/scamCallShield.test.ts"
   },
   "dependencies": {
     "@google/genai": "^1.0.0",
