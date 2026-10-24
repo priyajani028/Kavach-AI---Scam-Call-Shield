@@ -53,17 +53,25 @@ Open **http://localhost:5173** in your browser.
 
 <img width="3000" height="1658" alt="image" src="https://github.com/user-attachments/assets/e2727b9c-bb42-4ddb-b552-7c1ac4dce213" />
 
+---
+
 <img width="3002" height="1630" alt="image" src="https://github.com/user-attachments/assets/85de5225-b5c3-4971-9beb-ff67cd0bd4fd" />
+
+---
 
 <img width="2998" height="1666" alt="image" src="https://github.com/user-attachments/assets/43fb0b3a-2deb-475e-8c42-e6eab4cc3168" />
 
+---
+
 <img width="3002" height="1644" alt="image" src="https://github.com/user-attachments/assets/0b14dbb0-7a3d-4980-b8af-941066dd857a" />
 
+---
 
 <img width="3010" height="1630" alt="image" src="https://github.com/user-attachments/assets/1f480d7e-238e-49c3-a418-4eb4521a76f1" />
 
 ### Light Mode
 <img width="3018" height="1814" alt="image" src="https://github.com/user-attachments/assets/66fca821-6387-416e-8342-0c1f118a5145" />
 
+---
 
 <img width="3012" height="1656" alt="image" src="https://github.com/user-attachments/assets/8241e334-2f27-4538-ace1-8bfc0f143ee8" />
