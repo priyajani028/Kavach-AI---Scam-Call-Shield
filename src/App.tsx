@@ -610,41 +610,41 @@ export default function App() {
 
   return (
     <div
-      className={`min-h-screen flex flex-col transition-colors duration-200 ${
+      className={`min-h-screen w-full overflow-x-hidden flex flex-col transition-colors duration-200 ${
         isDark
           ? 'bg-[#131314] text-[#E3E3E3]'
           : 'bg-[#F8F9FA] text-[#202124]'
       }`}
     >
-      {/* Clean Google Workspace / Material 3 Top App Bar */}
+      {/* Clean Google Workspace / Material 3 Top App Bar (Fully Responsive on Mobile & Desktop) */}
       <header
-        className={`sticky top-0 z-30 border-b px-4 lg:px-8 h-16 flex items-center transition-colors duration-200 ${
+        className={`sticky top-0 z-30 border-b px-3 sm:px-6 lg:px-8 py-2.5 min-h-14 flex items-center transition-colors duration-200 ${
           isDark
-            ? 'bg-[#1E1F20] border-[#3C4043]'
-            : 'bg-white border-[#DADCE0]'
+            ? 'bg-[#1E1F20]/95 backdrop-blur-md border-[#3C4043]'
+            : 'bg-white/95 backdrop-blur-md border-[#DADCE0]'
         }`}
       >
-        <div className="max-w-[1360px] mx-auto w-full flex items-center justify-between gap-4">
+        <div className="max-w-[1360px] mx-auto w-full flex flex-wrap items-center justify-between gap-2.5 sm:gap-4">
           {/* Google Product Lockup */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 min-w-0">
             <div
-              className={`w-9 h-9 rounded-full flex items-center justify-center ${
+              className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full shrink-0 flex items-center justify-center ${
                 isDark
                   ? 'bg-[#8AB4F8]/15 text-[#8AB4F8]'
                   : 'bg-[#E8F0FE] text-[#1A73E8]'
               }`}
             >
-              <Shield className="w-5 h-5" />
+              <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div className="flex items-baseline gap-2.5">
-              <span className={`text-[19px] font-semibold tracking-tight ${textPrimary}`}>
+            <div className="flex items-baseline gap-2 min-w-0">
+              <span className={`text-base sm:text-[19px] font-semibold tracking-tight truncate ${textPrimary}`}>
                 Google{' '}
                 <span className={`font-normal ${textSecondary}`}>
                   Scam Call Shield
                 </span>
               </span>
               <span
-                className={`hidden md:inline-block text-xs font-medium px-2.5 py-0.5 rounded-md ${
+                className={`hidden md:inline-block text-xs font-medium px-2.5 py-0.5 rounded-md shrink-0 ${
                   isDark
                     ? 'bg-[#8AB4F8]/15 text-[#8AB4F8]'
                     : 'bg-[#E8F0FE] text-[#1967D2]'
@@ -656,8 +656,8 @@ export default function App() {
           </div>
 
           {/* Right Controls: Language Switcher + Dark/Light Mode Toggle */}
-          <div className="flex items-center gap-3">
-            <span className={`text-xs font-medium hidden sm:inline ${textSecondary}`}>
+          <div className="flex items-center gap-2 sm:gap-3 ml-auto">
+            <span className={`text-xs font-medium hidden lg:inline ${textSecondary}`}>
               Warning Voice
             </span>
             <div
@@ -671,13 +671,13 @@ export default function App() {
                 [
                   { code: 'gu', label: 'ગુજરાતી' },
                   { code: 'hi', label: 'हिंदी' },
-                  { code: 'en', label: 'English' },
+                  { code: 'en', label: 'EN' },
                 ] as const
               ).map((item) => (
                 <button
                   key={item.code}
                   onClick={() => setWarningLang(item.code)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer ${
+                  className={`px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium transition-colors cursor-pointer ${
                     warningLang === item.code
                       ? isDark
                         ? 'bg-[#8AB4F8] text-[#131314] font-semibold'
@@ -687,7 +687,14 @@ export default function App() {
                         : 'text-[#5F6368] hover:text-[#202124]'
                   }`}
                 >
-                  {item.label}
+                  {item.code === 'en' ? (
+                    <>
+                      <span className="sm:hidden">EN</span>
+                      <span className="hidden sm:inline">English</span>
+                    </>
+                  ) : (
+                    item.label
+                  )}
                 </button>
               ))}
             </div>
@@ -696,7 +703,7 @@ export default function App() {
             <button
               onClick={toggleTheme}
               title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium transition-colors cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full border text-xs font-medium transition-colors cursor-pointer shrink-0 ${
                 isDark
                   ? 'bg-[#282A2C] border-[#3C4043] text-[#E3E3E3] hover:bg-[#3C4043]'
                   : 'bg-[#F1F3F4] border-[#DADCE0] text-[#3C4043] hover:bg-[#E8EAED]'
@@ -719,19 +726,19 @@ export default function App() {
       </header>
 
       {/* Main Content Layout */}
-      <main className="max-w-[1360px] mx-auto w-full flex-1 px-4 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* LEFT COLUMN (Fixed-Dimension Google Pixel 9 Call Screen — Never Resizes!) */}
-        <section className="lg:col-span-5 flex flex-col items-center lg:sticky lg:top-22">
-          {/* Strictly Fixed 376px x 736px Pixel 9 Hardware Viewport */}
+      <main className="max-w-[1360px] mx-auto w-full flex-1 px-3 sm:px-6 lg:px-8 py-4 sm:py-6 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-start">
+        {/* LEFT COLUMN (Responsive Width + Fixed-Height Google Pixel 9 Call Screen) */}
+        <section className="lg:col-span-5 w-full flex flex-col items-center lg:sticky lg:top-20">
+          {/* Responsive width (w-full max-w-[376px]) with locked height so it fits 320px+ phones and never jumps */}
           <div
-            className={`w-[376px] h-[736px] shrink-0 rounded-[44px] p-[10px] border flex flex-col select-none transition-colors duration-200 ${
+            className={`w-full max-w-[376px] h-[660px] sm:h-[736px] shrink-0 rounded-[36px] sm:rounded-[44px] p-[8px] sm:p-[10px] border flex flex-col select-none transition-colors duration-200 ${
               isDark
                 ? 'bg-[#0B0C0E] border-[#3C4043] shadow-[0_24px_60px_rgba(0,0,0,0.65)]'
                 : 'bg-[#1F1F1F] border-[#3C4043] shadow-[0_20px_50px_rgba(32,33,36,0.18)]'
             }`}
           >
             <div
-              className={`w-full h-full rounded-[35px] overflow-hidden flex flex-col transition-colors duration-300 ${
+              className={`w-full h-full rounded-[28px] sm:rounded-[35px] overflow-hidden flex flex-col transition-colors duration-300 ${
                 isDark
                   ? callState === 'ENDED_BY_USER'
                     ? 'bg-[#141E17]'
@@ -1207,9 +1214,9 @@ export default function App() {
         </section>
 
         {/* RIGHT COLUMN (7 cols): CLEAN GOOGLE CONSOLE CARDS */}
-        <section className="lg:col-span-7 space-y-5">
+        <section className="lg:col-span-7 w-full min-w-0 space-y-4 sm:space-y-5">
           {/* Card 1: Audio Source & Live Speech-to-Text Monitor */}
-          <div className={`rounded-2xl border p-5 space-y-4 ${surfaceCard}`}>
+          <div className={`rounded-2xl border p-3.5 sm:p-5 space-y-4 ${surfaceCard}`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h2 className={`text-[15px] font-semibold ${textPrimary}`}>
@@ -1396,7 +1403,7 @@ export default function App() {
           </div>
 
           {/* Card 2: Overall Risk Score & Mid-Call Chunk Stream */}
-          <div className={`rounded-2xl border p-5 space-y-4 ${surfaceCard}`}>
+          <div className={`rounded-2xl border p-3.5 sm:p-5 space-y-4 ${surfaceCard}`}>
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
                 <h2 className={`text-[15px] font-semibold ${textPrimary}`}>
@@ -1548,7 +1555,7 @@ export default function App() {
                       <audio
                         controls
                         src={item.blobUrl}
-                        className="h-6 w-36"
+                        className="h-7 w-full sm:w-36"
                       />
                     </div>
 
@@ -1579,7 +1586,7 @@ export default function App() {
           </div>
 
           {/* Card 3: Emergency Contact Alert (Trilingual WhatsApp + Pointer Lines) */}
-          <div className={`rounded-2xl border p-5 space-y-4 ${surfaceCard}`}>
+          <div className={`rounded-2xl border p-3.5 sm:p-5 space-y-4 ${surfaceCard}`}>
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2.5">
                 <Users
@@ -1756,7 +1763,7 @@ export default function App() {
           </div>
 
           {/* Card 4: Next Steps & Fraud Prevention Playbook */}
-          <div className={`rounded-2xl border p-5 space-y-4 ${surfaceCard}`}>
+          <div className={`rounded-2xl border p-3.5 sm:p-5 space-y-4 ${surfaceCard}`}>
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2.5">
                 <Lock
